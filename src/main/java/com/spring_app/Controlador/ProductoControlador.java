@@ -48,7 +48,7 @@ public class ProductoControlador {
         return "redirect:/productos";
     }
 
-    //ACTUALIZAR
+    //ACTUALIZAR<
     @GetMapping("/editar/{id}")
     public String editarProducto(@PathVariable Long id, Model model) {
         Optional<Producto> producto = productoServicio.buscarProducto(id);
