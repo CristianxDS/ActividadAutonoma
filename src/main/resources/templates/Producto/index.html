@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"  rel="stylesheet" />
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineMax - Tu Cine Favorito</title>
+    <!-- CSS de Flowbite -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet">
+    <link href="/frontend/css/index.css" rel="stylesheet">
+
+
 </head>
 <body>
 
-
+<!-- Navbar -->
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">CineMax</span>
         </a>
         <div class="flex md:order-2">
             <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false" class="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 me-1">
@@ -51,36 +55,28 @@
                 <li>
                     <a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Productos</a>
                 </li>
-
+                <li>
+                    <a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Registro</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Facturas</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 
-
-
+<!-- Carrusel de Flowbite -->
 <div id="animation-carousel" class="relative w-full" data-carousel="static">
     <!-- Carousel wrapper -->
     <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
         <!-- Item 1 -->
         <div class="hidden duration-200 ease-linear" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-1.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="/imagenes/imagen1.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
         <!-- Item 2 -->
         <div class="hidden duration-200 ease-linear" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-2.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 3 -->
-        <div class="hidden duration-200 ease-linear" data-carousel-item="active">
-            <img src="/docs/images/carousel/carousel-3.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 4 -->
-        <div class="hidden duration-200 ease-linear" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-4.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 5 -->
-        <div class="hidden duration-200 ease-linear" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-5.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="/imagenes/imagen2.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
     </div>
     <!-- Slider controls -->
@@ -102,29 +98,55 @@
     </button>
 </div>
 
+<!-- Información sobre libros -->
+<section class="book-info">
+    <h2 class="text-center">Descubre Nuestros Libros Más Populares</h2>
+    <p class="text-center">Explora nuestra selección de libros más vendidos y los clásicos literarios recomendados por expertos. ¡Tu próxima lectura te está esperando!</p>
+    <div class="d-flex justify-content-center">
+        <ul>
+            <li>Más de 500 títulos en diversos géneros: Ficción, No Ficción, Fantasía, Ciencia Ficción, Biografías, y más.</li>
+            <li>Entrega rápida y segura, con opciones de envío a nivel nacional e internacional.</li>
+            <li>Ofertas exclusivas para miembros y promociones especiales todo el año.</li>
+        </ul>
+    </div>
+</section>
 
+<!-- Tarjetas de libros -->
+<section class="container py-12">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="book-card">
+                <img src="/imagenes/gatsby.webp" alt="El Gran Gatsby">
+                <h4>El Gran Gatsby</h4>
+                <p>Una obra maestra de F. Scott Fitzgerald que explora los excesos de la sociedad estadounidense en los años 20.</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="book-card">
+                <img src="/imagenes/100años.webp" alt="Cien Años de Soledad">
+                <h4>Cien Años de Soledad</h4>
+                <p>La obra más conocida de Gabriel García Márquez, un ejemplo del realismo mágico que cuenta la historia de los Buendía.</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="book-card">
+                <img src="/imagenes/1984.jpg" alt="1984">
+                <h4>1984</h4>
+                <p>La famosa novela distópica de George Orwell que describe un mundo totalitario y la lucha por la libertad.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-
-<ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400">
-    <li class="me-2">
-        <a href="#" aria-current="page" class="inline-block p-4 text-blue-600 bg-gray-100 rounded-t-lg active dark:bg-gray-800 dark:text-blue-500">Productos</a>
-    </li>
-    <li class="me-2">
-        <a href="#" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">Cliente/a>
-    </li>
-    <li class="me-2">
-        <a href="#" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">Proveedor</a>
-    </li>
-    <li class="me-2">
-        <a href="#" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">Factura</a>
-    </li>
-
-</ul>
-
-
-
-
-
+<!-- Pie de Página -->
+<footer>
+    <p>&copy; 2025 LibrosMax. Todos los derechos reservados.</p>
+    <div class="footer-links">
+        <a href="/contacto">Contacto</a>
+        <a href="/politica-de-privacidad">Política de Privacidad</a>
+        <a href="/terminos-y-condiciones">Términos y Condiciones</a>
+    </div>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 </body>

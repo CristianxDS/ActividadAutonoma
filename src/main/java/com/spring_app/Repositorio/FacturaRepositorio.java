@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface FacturaRepositorio  extends JpaRepository<Factura, Long> {
-    List<Factura> findByNombreContainingIgnoreCase(String nombre);
+public interface FacturaRepositorio extends JpaRepository<Factura, Long> {
+    List<Factura> findByCliente_NombreContainingIgnoreCase(String nombreCliente);
 }
+
