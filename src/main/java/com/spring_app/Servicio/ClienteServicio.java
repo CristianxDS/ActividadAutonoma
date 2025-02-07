@@ -57,13 +57,16 @@ public class ClienteServicio {
 
             tabla.addCell(new PdfPCell(new Phrase("Id",FontFactory.getFont("Arial",14, Font.BOLD))));
             tabla.addCell(new PdfPCell(new Phrase("Nombre",FontFactory.getFont("Arial",14, Font.BOLD))));
-            tabla.addCell(new PdfPCell(new Phrase("dirección",FontFactory.getFont("Arial",14, Font.BOLD))));
+            tabla.addCell(new PdfPCell(new Phrase("Apellido",FontFactory.getFont("Arial",14, Font.BOLD))));
+            tabla.addCell(new PdfPCell(new Phrase("Direccion",FontFactory.getFont("Arial",14, Font.BOLD))));
             tabla.addCell(new PdfPCell(new Phrase("Fecha de Nacimiento",FontFactory.getFont("Arial",14, Font.BOLD))));
+
             for (Cliente cliente :clientes){
                 tabla.addCell(new PdfPCell(new Phrase(String.valueOf(cliente.getId()),FontFactory.getFont("Arial",11,Font.NORMAL))));
                 tabla.addCell(new PdfPCell(new Phrase(String.valueOf(cliente.getNombre()),FontFactory.getFont("Arial",11, Font.NORMAL))));
+                tabla.addCell(new PdfPCell(new Phrase(String.valueOf(cliente.getApellido()),FontFactory.getFont("Arial",11, Font.NORMAL))));
                 tabla.addCell(new PdfPCell(new Phrase(String.valueOf(cliente.getDireccion()),FontFactory.getFont("Arial",11, Font.NORMAL))));
-
+                tabla.addCell(new PdfPCell(new Phrase(String.valueOf(cliente.getFechaNacimiento()),FontFactory.getFont("Arial",11, Font.NORMAL))));
             }
             document.add(tabla);
             document.close();

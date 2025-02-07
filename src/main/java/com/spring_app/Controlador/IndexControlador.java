@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexControlador {
 
-    @GetMapping("/index")
+    @GetMapping("/")
     private String index(){
         return "Producto/index";
     }
