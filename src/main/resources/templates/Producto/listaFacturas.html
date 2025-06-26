@@ -1,153 +1,94 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Lista de Facturas</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <style>
-        /* Estilos personalizados */
-        body {
-            background-color: #f8f9fa; /* Fondo gris suave */
-        }
-
-        .navbar-custom {
-            background-color: #007bff; /* Color de fondo azul */
-        }
-        .navbar-custom .navbar-brand, .navbar-custom .nav-link {
-            color: #fff;
-        }
-        .navbar-custom .nav-link:hover {
-            color: #ffc107;
-        }
-
-        .container {
-            margin-top: 50px;
-        }
-
-        .table th, .table td {
-            text-align: center;
-        }
-
-        .form-container {
-            background-color: #ffffff; /* Fondo blanco para el formulario */
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
-
-        .footer {
-            background-color: #343a40;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        /* Hacer que el navbar se quede en la parte superior */
-        .navbar {
-            position: sticky;
-            top: 0;
-            z-index: 1030;
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <title>Facturas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
 </head>
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-custom">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Mi Tienda</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm border-bottom">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-primary" th:href="@{/}">UrbanTienda</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/index">Productos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Clientes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Facturas</a>
-                </li>
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link" th:href="@{/productos}">Productos</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/clientes}">Clientes</a></li>
+                <li class="nav-item"><a class="nav-link active" th:href="@{/facturas}">Facturas</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/proveedores}">Proveedores</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<!-- Contenido principal -->
-<div class="container">
-    <h1 class="text-center my-5">Lista de Facturas</h1>
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold">Gestión de Facturas</h2>
+        <a th:href="@{/facturas/formulario}" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Nueva Factura
+        </a>
+    </div>
 
-    <!-- Formulario de búsqueda -->
     <form th:action="@{/facturas}" method="get" class="mb-4">
-        <div class="row">
-            <div class="col-md-10">
-                <input type="text" name="buscarFactura" th:value="${buscarFactura}" class="form-control" placeholder="Buscar por cliente" />
-            </div>
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-primary w-100">Buscar</button>
-            </div>
+        <div class="input-group">
+            <input
+                    type="text"
+                    name="buscarFactura"
+                    class="form-control"
+                    placeholder="Buscar por cliente..."
+                    th:value="${buscarFactura}" />
+            <button class="btn btn-primary" type="submit">
+                <i class="bi bi-search"></i> Buscar
+            </button>
         </div>
     </form>
 
-    <!-- Tabla de facturas -->
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Cliente</th>
-            <th>Producto</th>
-            <th>Cantidad</th>
-            <th>Precio</th>
-            <th>Subtotal</th>
-            <th>Total</th>
-            <th>Acciones</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="factura : ${facturas}">
-            <td th:text="${factura.id}"></td>
-            <td th:text="${factura.cliente.nombre}"></td>
-            <td th:text="${factura.productos.nombre}"></td>
-            <td th:text="${factura.cantidad}"></td>
-            <td th:text="${factura.precio}"></td>
-            <td th:text="${factura.subtotal}"></td>
-            <td th:text="${factura.total}"></td>
-            <td>
-                <a th:href="@{/editarFactura/{id}(id=${factura.id})}" class="btn btn-warning btn-sm">Editar</a>
-                <a th:href="@{/eliminarFactura/{id}(id=${factura.id})}" class="btn btn-danger btn-sm"
-                   onclick="return confirm('¿Estás seguro de eliminar esta factura?')">Eliminar</a>
-                <a th:href="@{/facturas/pdf/{id}(id=${factura.id})}" class="btn btn-success btn-sm">Descargar PDF</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-    <!-- Botón para agregar una nueva factura -->
-    <div class="mt-4">
-        <a th:href="@{/facturas/formulario}" class="btn btn-primary">Nueva Factura</a>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="table-light text-center">
+            <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Subtotal</th>
+                <th>Total</th>
+                <th>Opciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="factura : ${facturas}">
+                <td th:text="${factura.id}">1</td>
+                <td th:text="${factura.cliente.nombre}">Cliente</td>
+                <td th:text="${factura.productos.nombre}">Producto</td>
+                <td th:text="${factura.cantidad}">1</td>
+                <td th:text="${factura.precio}">0.00</td>
+                <td th:text="${factura.subtotal}">0.00</td>
+                <td th:text="${factura.total}">0.00</td>
+                <td class="text-center">
+                    <a th:href="@{'/editarFactura/' + ${factura.id}}" class="btn btn-sm btn-outline-warning me-1">
+                        <i class="bi bi-pencil-square"></i> Editar
+                    </a>
+                    <a th:href="@{'/eliminarFactura/' + ${factura.id}}" class="btn btn-sm btn-outline-danger"
+                       onclick="return confirm('¿Estás seguro de eliminar esta factura?')">
+                        <i class="bi bi-trash"></i> Eliminar
+                    </a>
+                </td>
+            </tr>
+            <tr th:if="${facturas.size() == 0}">
+                <td colspan="8" class="text-center text-muted">No se encontraron facturas.</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
-<!-- Footer -->
-<div class="footer">
-    <p>&copy; 2025 Mi Tienda. Todos los derechos reservados.</p>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 </html>

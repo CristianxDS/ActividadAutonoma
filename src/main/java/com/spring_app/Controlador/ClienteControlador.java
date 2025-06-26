@@ -63,18 +63,5 @@ public class ClienteControlador {
     }
 
 
-    @GetMapping("/clientes/pdf")
-    public ResponseEntity<byte[]> descargarPDF()throws Exception{
-        String rutaDpf=clienteServicio.generarPdf();
-        File pdfFile=new File(rutaDpf);
-        if (!pdfFile.exists()){
-            throw new FileNotFoundException("El Archivo Pdf no Existe");
-        }
-        byte[] contenido= Files.readAllBytes(pdfFile.toPath());
-        HttpHeaders headers= new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_PDF);
-        headers.setContentDispositionFormData("attachment","cliente.pdf");
-        return new ResponseEntity<>(contenido,headers, HttpStatus.OK);
-    }
 
 }
