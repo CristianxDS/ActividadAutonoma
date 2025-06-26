@@ -1,0 +1,141 @@
+/* General */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+.navbar-custom {
+    background-color: #0044cc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-custom .navbar-brand {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.navbar-custom .navbar-brand:hover {
+    color: #ffc107;
+}
+
+.navbar-custom .navbar-nav .nav-link {
+    color: #ffffff;
+    font-size: 1rem;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.navbar-custom .navbar-nav .nav-link:hover {
+    color: #ffc107;
+}
+
+/* Títulos */
+h2 {
+    text-align: center;
+    color: #343a40;
+    margin: 20px 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* Formulario de búsqueda */
+.input-group .form-control {
+    border-radius: 5px 0 0 5px;
+    border: 1px solid #ced4da;
+}
+
+.input-group .btn-primary {
+    border-radius: 0 5px 5px 0;
+    background-color: #007bff;
+    border: none;
+}
+
+.input-group .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Tabla */
+.table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table th {
+    background-color: #0044cc;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+}
+
+.table td {
+    text-align: center;
+    padding: 10px;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Botones */
+.btn {
+    font-size: 1rem;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.btn-guardar {
+    background-color: #28a745;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-guardar:hover {
+    background-color: #218838;
+}
+
+.btn-pdf4 {
+    background-color: #dc3545;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-pdf4:hover {
+    background-color: #c82333;
+}
+
+.btn-actualizar {
+    background-color: #ffc107;
+    color: #212529;
+    border: none;
+}
+
+.btn-actualizar:hover {
+    background-color: #e0a800;
+    color: #ffffff;
+}
+
+.btn-eliminar {
+    background-color: #dc3545;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-eliminar:hover {
+    background-color: #c82333;
+}
+
+/* Botones de acción en la tabla */
+.table .actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}

@@ -8,6 +8,7 @@
 </head>
 <body>
 
+<<<<<<< HEAD
 <div class="container py-5">
   <h2 class="text-center fw-bold mb-4 text-primary">REGISTRO DE FACTURA</h2>
   <div class="card shadow">
@@ -58,6 +59,88 @@
       </form>
     </div>
   </div>
+=======
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-custom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/index">Mi Tienda</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li>
+          <a th:href="@{/productos}" class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Productos</a>
+        </li>
+        <li>
+          <a th:href="@{/clientes}" class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Registro</a>
+        </li>
+        <li>
+          <a th:href="@{/facturas}" class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Facturas</a>
+        </li>
+        <li>
+          <a th:href="@{/proveedores}" class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Proveedores</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Formulario de Factura -->
+<div class="container form-container">
+  <h1 class="text-center" th:if="${factura.id == null}">Crear Factura</h1>
+  <h1 class="text-center" th:if="${factura.id != null}">Editar Factura</h1>
+
+  <form th:action="@{/guardarFactura}" th:object="${factura}" method="post">
+    <!-- Campo oculto para el ID (solo si es edición) -->
+    <input type="hidden" th:field="*{id}" />
+
+    <!-- Campo de cantidad -->
+    <div class="mb-3">
+      <label for="cantidad" class="form-label">Cantidad</label>
+      <input type="number" id="cantidad" th:field="*{cantidad}" class="form-control" required />
+    </div>
+
+    <!-- Campo de precio -->
+    <div class="mb-3">
+      <label for="precio" class="form-label">Precio</label>
+      <input type="number" id="precio" th:field="*{precio}" class="form-control" step="0.01" required />
+    </div>
+
+    <!-- Campo de subtotal (calculado automáticamente si necesario) -->
+    <div class="mb-3">
+      <label for="subtotal" class="form-label">Subtotal</label>
+      <input type="number" id="subtotal" th:field="*{subtotal}" class="form-control" step="0.01" readonly />
+    </div>
+
+    <!-- Campo de total -->
+    <div class="mb-3">
+      <label for="total" class="form-label">Total</label>
+      <input type="number" id="total" th:field="*{total}" class="form-control" step="0.01" required />
+    </div>
+
+    <!-- Selector de cliente -->
+    <div class="mb-3">
+      <label for="cliente" class="form-label">Cliente</label>
+      <select id="cliente" th:field="*{cliente}" class="form-select" required/>
+        <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nombre}">Seleccionar cliente</option>
+      </select>
+    </div>
+
+    <!-- Selector de producto -->
+    <div class="mb-3">
+      <label for="productos" class="form-label">Producto</label>
+      <select id="productos" th:field="*{productos}" class="form-select" required>
+        <option th:each="producto : ${productos}" th:value="${producto.id}" th:text="${producto.nombre}">Seleccionar producto</option>
+      </select>
+    </div>
+
+    <!-- Botones -->
+    <div class="d-flex justify-content-between mt-4">
+      <button type="submit" class="btn btn-primary">Guardar</button>
+      <a th:href="@{/facturas}" class="btn btn-secondary">Cancelar</a>
+    </div>
+  </form>
+>>>>>>> 5e6653afb630086f4ecbd0798085eef7d3d7b9d5
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>

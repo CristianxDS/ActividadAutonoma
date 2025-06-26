@@ -4,6 +4,10 @@ import com.spring_app.Entidad.Factura;
 import com.spring_app.Servicio.ClienteServicio;
 import com.spring_app.Servicio.FacturaServicio;
 import com.spring_app.Servicio.ProductoServicio;
+<<<<<<< HEAD
+=======
+import jakarta.persistence.Id;
+>>>>>>> 5e6653afb630086f4ecbd0798085eef7d3d7b9d5
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -30,12 +34,22 @@ public class FacturaControlador {
     @Autowired
     private ProductoServicio productoServicio;
 
+    @Autowired
+    private ClienteServicio clienteServicio;
+
+    @Autowired
+    private ProductoServicio productoServicio;
+
     // Mostrar lista de facturas
     @GetMapping("/facturas")
-    public String mostrarFacturas(@RequestParam(name = "buscarFactura", required = false, defaultValue = "") String buscarFactura, Model model) {
+    public String mostrarFacturas(@RequestParam(name = "buscarFactura", required = false, defaultValue = "") String buscarFactura,String buscarClientes,String buscarProducto, Model model) {
         List<Factura> facturas = facturaServicio.buscarFacturasPorCliente(buscarFactura);
         model.addAttribute("buscarFactura", buscarFactura);
         model.addAttribute("facturas", facturas);
+
+        model.addAttribute("clientes", clienteServicio.buscarClienteNombre(buscarClientes));
+        model.addAttribute("productos", productoServicio.buscarProductoNombre(buscarProducto));
+
         return "Producto/listaFacturas"; // Actualizado
     }
 
